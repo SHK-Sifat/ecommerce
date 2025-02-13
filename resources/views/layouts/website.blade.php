@@ -32,59 +32,7 @@
         <!--======  Start Overlay  ======-->
         <div class="offcanvas__overlay"></div>
         <!--====== Start Sidemenu-wrapper-cart Area ======-->
-        <div class="sidemenu-wrapper-cart">
-            <div class="sidemenu-content">
-                <div class="widget widget-shopping-cart">
-                    <h4>My cart</h4>
-                    <div class="sidemenu-cart-close"><i class="far fa-times"></i></div>
-                    <div class="widget-shopping-cart-content">
-                        <ul class="pesco-mini-cart-list">
-                            <li class="sidebar-cart-item">
-                                <a href="#" class="remove-cart"><i class="far fa-trash-alt"></i></a>
-                                <a href="#">
-                                    <img src="{{ asset("contents/website") }}/assets/images/products/cart-1.jpg" alt="cart image">
-                                    leggings with mesh panels
-                                </a>
-                                <span class="quantity">1 × <span><span class="currency">$</span>940.00</span></span>
-                            </li>
-                            <li class="sidebar-cart-item">
-                                <a href="#" class="remove-cart"><i class="far fa-trash-alt"></i></a>
-                                <a href="#">
-                                    <img src="{{ asset("contents/website") }}/assets/images/products/cart-2.jpg" alt="cart image">
-                                    Summer dress with belt
-                                </a>
-                                <span class="quantity">1 × <span><span class="currency">$</span>940.00</span></span>
-                            </li>
-                            <li class="sidebar-cart-item">
-                                <a href="#" class="remove-cart"><i class="far fa-trash-alt"></i></a>
-                                <a href="#">
-                                    <img src="{{ asset("contents/website") }}/assets/images/products/cart-3.jpg" alt="cart image">
-                                    Floral print sundress
-                                </a>
-                                <span class="quantity">1 × <span><span class="currency">$</span>940.00</span></span>
-                            </li>
-                            <li class="sidebar-cart-item">
-                                <a href="#" class="remove-cart"><i class="far fa-trash-alt"></i></a>
-                                <a href="#">
-                                    <img src="{{ asset("contents/website") }}/assets/images/products/cart-4.jpg" alt="cart image">
-                                    Sheath Gown Red Colors
-                                </a>
-                                <span class="quantity">1 × <span><span class="currency">$</span>940.00</span></span>
-                            </li>
-                        </ul>
-                        <div class="cart-mini-total">
-                            <div class="cart-total">
-                                <span><strong>Subtotal:</strong></span> <span class="amount">1 × <span><span class="currency">$</span>940.00</span></span>
-                            </div>
-                        </div>
-                        <div class="cart-button-box">
-                            <a href="checkout.html" class="theme-btn style-one">Proceed to checkout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--====== End Sidemenu-wrapper-cart Area ======-->
-        <!--====== Start Header Section ======-->
+
         <header class="header-area">
             <!--===  Search Header Main  ===-->
             <div class="search-header-main">
@@ -273,7 +221,9 @@
                                 <li>
                                     <div class="cart-button d-flex align-items-center">
                                         <div class="icon">
-                                            <i class="fas fa-shopping-bag"></i><span class="pro-count">01</span>
+                                          <a href="{{url('cart')}}">
+                                            <i  class="fas fa-shopping-bag"></i><span class="pro-count">{{Cart::getContent()->count()}}</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </li>

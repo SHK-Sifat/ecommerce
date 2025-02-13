@@ -35,9 +35,20 @@
     <section class="cart-page-section pt-120 pb-80">
         <div class="container">
             <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-7">
+                    @if(Session::has('success'))
+                      <div class="alert alert-success">
+                       {{Session::get('success')}}
+                      </div>
+                    @endif
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row">
                 <div class="col-xl-8">
                     <div class="cart-wrapper mb-40" data-aos="fade-up" data-aos-duration="1200">
-                        <h3 class="mb-20">Total Cart Item: 04</h3>
+                        <h3 class="mb-20">Total Cart Item: {{Cart::getContent()->count()}}</h3>
                         <div class="cart-list table-responsive">
                             <table class="table">
                                 <thead>
@@ -49,38 +60,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  @foreach($cartItems as $item)
-                                    <tr>
-                                        <td>
-                                            <div class="product-thumb-item">
-                                                <div class="product-img">
-                                                    <img src="{{asset('uploads/product/'.$item->model->product_image)}}" alt="Product Thumbnail">
-                                                </div>
-                                                <div class="product-info">
-                                                    <h4 class="title"><a href="{{url('shop/details/'.$item->product_slug)}}">{{$item->model->product_title}}</a></h4>
-                                                    <div class="product-meta">
-                                                    </div>
+                                @foreach($items as $item)
+                                <tr>
+                                    <td>
+                                        <div class="product-thumb-item">
+                                            <div class="product-img">
+                                                <img src="{{asset('uploads/product/'.$item->attributes->image)}}">
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="title"><a href="shop-details.html">{{$item->name}}</a></h4>
+                                                <div class="product-meta">
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="price"><span class="currrency">$</span>{{$item->product_newprice}}</div>
-                                        </td>
-                                        <td>
-                                            <div class="action-cart">
-                                                <div class="quantity-input">
-                                                    <button class="quantity-down"><i class="far fa-minus"></i></button>
-                                                    <input class="quantity" type="text" value="{{$item->qty}}" name="quantity">
-                                                    <button class="quantity-up"><i class="far fa-plus"></i></button>
-                                                </div>
-                                                <div class="cart-remove"><i class="far fa-times"></i></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="price"><span class="currrency">$</span>{{$item->price}}</div>
+                                    </td>
+                                    <td>
+                                        <div class="action-cart">
+                                            <div class="quantity-input">
+                                              <a class="quantity-down" href="{{route('decrease.quantity',$item->id)}}"><i class="far fa-minus"></i></a>
+                                              <input class="quantity" type="text" value="{{$item->quantity}}" name="quantity">
+                                              <a class="quantity-up" href="{{route('add.quantity',$item->id)}}"><i class="far fa-plus"></i></a>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="total-price"><span class="currrency">$</span>{{$item->Subtotal()}}</div>
-                                        </td>
-                                    </tr>
-                                  @endforeach
+                                              <a class="cart-remove" href="{{route('remove.item',$item->id)}}"><i class="far fa-times"></i></a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="total-price"><span class="currrency">$</span>{{$item->quantity * $item->price}}</div>
+                                    </td>
+                                </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -90,7 +101,9 @@
 
                             </div>
                             <div class="cl-cart">
-                                <button class="theme-btn style-one">Clear Cart</button>
+
+                                  <a class="theme-btn style-one" href="{{route('clear')}}">Clear Cart</a>
+
                             </div>
                         </div>
                     </div>
@@ -110,12 +123,9 @@
                         <!--=== Cart Widget  ===-->
                         <div class="cart-widget cart-total-widget mb-40" data-aos="fade-up" data-aos-duration="1400">
                             <h4>Cart Totals</h4>
-                            <div class="sub-total">
-                                <h5>Subtotal <span class="price">${{Cart::instance('cart')->Subtotal()}}</span></h5>
-                            </div>
 
                             <div class="price-total">
-                                <h5>Total <span class="price">${{Cart::instance('cart')->total()}}</span></h5>
+                                <h5>Total <span class="price">{{$total}}</span></h5>
                             </div>
                             <div class="proceced-checkout">
                                 <a href="#" class="theme-btn style-one">Proceed to checkout</a>

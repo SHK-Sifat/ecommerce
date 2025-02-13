@@ -354,9 +354,6 @@
                                                 <a href="#" class="icon-btn"><i class="fa fa-heart"></i></a>
                                                 <a href="{{ asset("contents/website") }}/assets/images/products/feature-product-2.png" class="img-popup icon-btn"><i class="fa fa-eye"></i></a>
                                             </div>
-                                            <div class="cart-button">
-                                                <a href="#" class="cart-btn"><i class="far fa-shopping-basket"></i> <span class="text">Add To Cart</span></a>
-                                            </div>
                                         </div>
                                         <div class="product-info-wrap">
                                             <div class="product-info">
@@ -396,9 +393,6 @@
                                                 <a href="#" class="icon-btn"><i class="fa fa-heart"></i></a>
                                                 <a href="{{ asset("contents/website") }}/assets/images/products/feature-product-2.png" class="img-popup icon-btn"><i class="fa fa-eye"></i></a>
                                             </div>
-                                            <div class="cart-button">
-                                                <a href="#" class="cart-btn"><i class="far fa-shopping-basket"></i> <span class="text">Add To Cart</span></a>
-                                            </div>
                                         </div>
                                         <div class="product-info-wrap">
                                             <div class="product-info">
@@ -437,9 +431,6 @@
                                             <div class="hover-content">
                                                 <a href="#" class="icon-btn"><i class="fa fa-heart"></i></a>
                                                 <a href="{{ asset("contents/website") }}/assets/images/products/feature-product-2.png" class="img-popup icon-btn"><i class="fa fa-eye"></i></a>
-                                            </div>
-                                            <div class="cart-button">
-                                                <a href="#" class="cart-btn"><i class="far fa-shopping-basket"></i> <span class="text">Add To Cart</span></a>
                                             </div>
                                         </div>
                                         <div class="product-info-wrap">
@@ -502,9 +493,6 @@
                         <div class="hover-content">
                             <a href="#" class="icon-btn"><i class="fa fa-heart"></i></a>
                             <a href="{{ asset("contents/website") }}/assets/images/products/feature-product-1.png" class="img-popup icon-btn"><i class="fa fa-eye"></i></a>
-                        </div>
-                        <div class="cart-button">
-                            <a href="#" class="cart-btn"><i class="far fa-shopping-basket"></i> <span class="text">Add To Cart</span></a>
                         </div>
                     </div>
                     <div class="product-info-wrap">
@@ -623,35 +611,40 @@
         </div>
         <div class="container-fluid">
           @php
-          $tranding_product=App\Models\Product::where('product_status',1)->where('product_categori',3)->get();
+          $tranding_product=App\Models\Product::where('product_status',1)->where('product_type',3)->get();
           @endphp
-            <div class="trending-products-slider" data-aos="fade-up" data-aos-duration="1400">
-                <!--=== Product Item ===-->
-                @foreach($tranding_product as $tproduct)
-                <div class="product-item style-two">
-                    <div class="product-thumbnail">
-                        <img src="{{asset('uploads/product/'.$tproduct->product_image)}}" alt="Products">
-                    </div>
-                    <div class="product-info-wrap">
-                        <div class="product-info">
-                            <ul class="ratings rating5">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><a href="#">({{$tproduct->product_available}})</a></li>
-                            </ul>
-                            <h4 class="title"><a href="{{url('shop/details/'.$tproduct->product_slug)}}">{{$tproduct->product_title}}</a></h4>
-                        </div>
-                        <div class="product-price">
-                            <span class="price prev-price"><span class="currency">$</span>{{$tproduct->product_oldprice}}</span>
-                            <span class="price new-price"><span class="currency">$</span>{{$tproduct->product_newprice}}</span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
+          <div class="feature-slider-one" data-aos="fade-up" data-aos-delay="20" data-aos-duration="1400">
+              <!--=== Project Item  ===-->
+              @foreach($tranding_product as $tproduct)
+              <div class="product-item style-one mb-40">
+                  <div class="product-thumbnail">
+                      <img src="{{asset('uploads/product/'.$tproduct->product_image)}}" alt="">
+                      <div class="discount">{{$tproduct->product_discount}}</div>
+                      <div class="hover-content">
+                          <a href="#" class="icon-btn"><i class="fa fa-heart"></i></a>
+                          <a href="{{ asset("contents/website") }}/assets/images/products/feature-product-1.png" class="img-popup icon-btn"><i class="fa fa-eye"></i></a>
+                      </div>
+                  </div>
+                  <div class="product-info-wrap">
+                      <div class="product-info">
+                          <ul class="ratings rating4">
+                              <li><i class="fas fa-star"></i></li>
+                              <li><i class="fas fa-star"></i></li>
+                              <li><i class="fas fa-star"></i></li>
+                              <li><i class="fas fa-star"></i></li>
+                              <li><i class="fas fa-star"></i></li>
+                              <li><a href="#">({{$tproduct->product_available}})</a></li>
+                          </ul>
+                          <h4 class="title"><a href="{{url('shop/details/'.$tproduct->product_slug)}}">{{$tproduct->product_title}}</a></h4>
+                      </div>
+                      <div class="product-price">
+                          <span class="price prev-price"><span class="currency">$</span>{{$tproduct->product_oldprice}}</span>
+                          <span class="price new-price"><span class="currency">$</span>{{$tproduct->product_newprice}}</span>
+                      </div>
+                  </div>
+              </div>
+              @endforeach
+          </div>
         </div>
     </section><!--====== End Trending Products Sections  ======-->
     <!--====== Start Blog Sections  ======-->

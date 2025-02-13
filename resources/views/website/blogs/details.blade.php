@@ -120,10 +120,10 @@
                             </div>
                             <!--=== Reviews Area ===-->
                             <div class="pesco-comment-area mb-40" data-aos="fade-up" data-aos-delay="30" data-aos-duration="1000">
-                                <h4 class="mb-40">Total Reviews (90)</h4>
-                                @php
-                                $all_comment=App\Models\Comment::where('comment_status',1)->orderBy('comment_id','ASC')->get();
-                                @endphp
+                              @php
+                              $all_comment=App\Models\Comment::where('comment_status',1)->orderBy('comment_id','ASC')->get();
+                              @endphp
+                                <h4 class="mb-40">Total Reviews ({{$all_comment->count()}})</h4>
                                 <ul>
                                   @foreach($all_comment as $comment)
                                     <li class="comment">

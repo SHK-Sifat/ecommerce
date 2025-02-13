@@ -50,8 +50,12 @@ Route::post('contact/review/submit', [ProcessController::class, 'review']);
 
 Route::get('category/{url}', [WebsiteCategoryController::class, 'category']);
 
-Route::get('cart', [CartController::class, 'cart']);
-Route::post('product/add-to-cart', [CartController::class, 'addToCart'])->name('product.cart');
+Route::get('cart', [CartController::class, 'cart'])->name('cart');
+Route::get('add-cart/{productId}', [CartController::class, 'addToCart'])->name('add.cart');
+Route::get('add-quantity/{productId}', [CartController::class, 'addQuantity'])->name('add.quantity');
+Route::get('decrease-quantity/{productId}', [CartController::class, 'decreaseQuantity'])->name('decrease.quantity');
+Route::get('remove-item/{productId}', [CartController::class, 'removeItem'])->name('remove.item');
+Route::get('clear', [CartController::class, 'clearcart'])->name('clear');
 
 
 

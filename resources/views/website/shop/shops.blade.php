@@ -77,9 +77,7 @@
                                   <a href="#" class="icon-btn"><i class="fa fa-heart"></i></a>
 
                               </div>
-                              <div class="cart-button">
-                                  <a href=""  class="cart-btn"><i class="far fa-shopping-basket"></i> <span class="text">Add To Cart</span></a>
-                              </div>
+
                           </div>
                           <div class="product-info-wrap">
                               <div class="product-info">

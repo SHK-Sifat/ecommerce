@@ -69,39 +69,35 @@
                                 <ul>
                                     <li>
                                         <div class="quantity-input">
-
                                             <button class="quantity-down"><i class="far fa-minus"></i></button>
-                                            <input class="quantity" type="number" id="quantity" value="1" name="quantity" required>
+                                            <input class="quantity" type="text" value="1" name="quantity">
                                             <button class="quantity-up"><i class="far fa-plus"></i></button>
                                         </div>
                                     </li>
                                     <li>
-                                      <a href="javascript:void(0)" onclick="event.preventDefault();document.getElementById('addtocart').submit();"
-                                       id="cartEffect" class="theme-btn style-one">
-                                        <span>Add To cart</span>
-                                          <form id="addtocart" method="post" action="{{Route('product.cart')}}" >
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{$product->product_id}}">
-                                            <input type="hidden" name="quantity" id="qty" value="1">
-                                          </form>
-                                      </a>
+                                        <a href="{{route('add.cart',$product->product_id)}}" class="theme-btn style-one">Add To cart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="icon-btn"><i class="far fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="icon-btn"><i class="far fa-sync"></i></a>
                                     </li>
                                 </ul>
-
                             </div>
                             <div class="product-meta">
-                                <ul>
-                                    <li><span>SKU :</span>KE-91039</li>
-                                    <li><span>Category :</span><td>{{$product->category->procate_name}}</td></li>
-                                    <li><span>Tags :</span><a href="#">Bags</a>,<a href="#">Cloths</a>,<a href="#">Dress</a></li>
-                                    <li><span>Share :</span>
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                                        <ul>
+                                            <li><span>SKU :</span>KE-91039</li>
+                                            <li><span>Category :</span>Women Cloths</li>
+                                            <li><span>Tags :</span><a href="#">Bags</a>,<a href="#">Cloths</a>,<a href="#">Dress</a></li>
+                                            <li><span>Share :</span>
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
                             <div class="special-features">
                                 <span><i class="far fa-shipping-fast"></i>Free Shipping</span>
                                 <span><i class="far fa-box-open"></i>Easy Returns</span>
